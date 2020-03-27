@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_233625) do
+ActiveRecord::Schema.define(version: 2020_03_27_233721) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street_no"
+    t.string "apt_no"
+    t.string "postal_code"
+    t.string "city"
+    t.integer "province_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["province_id"], name: "index_addresses_on_province_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -61,6 +72,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_233625) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "addresses", "provinces"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "states"
 end
