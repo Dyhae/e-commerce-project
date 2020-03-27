@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_234610) do
+ActiveRecord::Schema.define(version: 2020_03_27_235232) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street_no"
@@ -37,6 +37,21 @@ ActiveRecord::Schema.define(version: 2020_03_27_234610) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "order_number"
+    t.float "subtotal"
+    t.float "GST"
+    t.float "PST"
+    t.float "HST"
+    t.float "total"
+    t.integer "status_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["status_id"], name: "index_orders_on_status_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -90,6 +105,8 @@ ActiveRecord::Schema.define(version: 2020_03_27_234610) do
   add_foreign_key "addresses", "provinces"
   add_foreign_key "addresslists", "addresses"
   add_foreign_key "addresslists", "users"
+  add_foreign_key "orders", "statuses"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "states"
 end
