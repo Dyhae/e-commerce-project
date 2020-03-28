@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_28_001605) do
+ActiveRecord::Schema.define(version: 2020_03_28_003043) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street_no"
@@ -40,10 +40,6 @@ ActiveRecord::Schema.define(version: 2020_03_28_001605) do
   end
 
   create_table "orderproductlists", force: :cascade do |t|
-    t.string "rails"
-    t.string "g"
-    t.string "model"
-    t.string "orderproductlist"
     t.float "price"
     t.integer "quantity"
     t.integer "oder_id", null: false
