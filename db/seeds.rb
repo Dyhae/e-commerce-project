@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -5,3 +7,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+State.destroy_all
+Category.destroy_all
+Status.destroy_all
+Province.destroy_all
+User.destroy_all
+Product.destroy_all
+Order.destroy_all
+Address.destroy_all
+Addresslist.destroy_all
+Orderproductlist.destroy_all
+
+6.times do
+  category = Category.find_or_create_by(name: Faker::Vehicle.make)
+  category.save
+end
