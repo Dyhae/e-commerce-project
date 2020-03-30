@@ -1,2 +1,7 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<% @count = 0 %>
+<% @category.products.each do |category_products| %>
+  <div>
+    <%= @count += 1 %>
+    <%= category_products.model %>
+  </div>
+<% end %>
