@@ -21,11 +21,11 @@ require 'csv'
 # Addresslist.destroy_all
 # Orderproductlist.destroy_all
 
-myArray = ['New', 'On Sale']
-myArray.each do |p|
-  state = State.find_or_create_by(name: p)
-  state.save
-end
+# myArray = ['New', 'On Sale']
+# myArray.each do |p|
+#   state = State.find_or_create_by(name: p)
+#   state.save
+# end
 
 # csv_text = File.read(Rails.root.join('lib', 'seeds', 'card_csvfile.csv'))
 # csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
@@ -47,24 +47,32 @@ end
 #   product.save
 # end
 
-# 7.times do
-#   category = Category.find_or_create_by(name: Faker::Vehicle.make)
-#   category.save
-#   20.times do
-#     price = rand(1000.00..120_000.00)
-#     product = Product.find_or_create_by(model: Faker::Vehicle.model(make_of_model: category.name))
-#     product.color = Faker::Vehicle.color
-#     product.transmission = Faker::Vehicle.transmission
-#     product.car_description = Faker::Vehicle.standard_specs[0]
-#     product.car_option = Faker::Vehicle.car_options[0]
-#     product.price = price
-#     product.sale_percentage = 0.0
-#     product.quantity_in_stock = 1
-#     product.state = state
-#     product.category = category
-#     product.save
-#   end
-# rescue StandardError => e
-#   puts e.message
-# end
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+myArray = ['New', 'On Sale']
+myArray.each do |p|
+  state = State.find_or_create_by(name: p)
+  state.save
+
+  7.times do
+    category = Category.find_or_create_by(name: Faker::Vehicle.make)
+    category.save
+    20.times do
+      price = rand(1000.00..120_000.00)
+      product = Product.find_or_create_by(model: Faker::Vehicle.model(make_of_model: category.name))
+      product.color = Faker::Vehicle.color
+      product.transmission = Faker::Vehicle.transmission
+      product.car_description = Faker::Vehicle.standard_specs[0]
+      product.car_option = Faker::Vehicle.car_options[0]
+      product.price = price
+      product.sale_percentage = 0.0
+      product.quantity_in_stock = 1
+      product.state = state
+      product.category = category
+      product.save
+    end
+  end
+rescue StandardError => e
+  puts e.message
+end
+if Rails.env.development?
+  AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+end

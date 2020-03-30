@@ -1,13 +1,10 @@
 <% if @products.empty? %>
   <p>There are no Characters available</p>
 <% else %>
-    <% @count = 1 %>
     <% @products.each do |product| %>
     <div>
-      <%= @count %>
       <%= product.model %>
       <%= product.category.name %>
     </div>
-      <% @count += 1 %>
     <% end %>
 <% end %>

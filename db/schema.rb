@@ -68,11 +68,11 @@ ActiveRecord::Schema.define(version: 2020_03_30_002317) do
   create_table "orderproductlists", force: :cascade do |t|
     t.float "price"
     t.integer "quantity"
-    t.integer "oder_id", null: false
+    t.integer "order_id", null: false
     t.integer "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["oder_id"], name: "index_orderproductlists_on_oder_id"
+    t.index ["order_id"], name: "index_orderproductlists_on_order_id"
     t.index ["product_id"], name: "index_orderproductlists_on_product_id"
   end
 
@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 2020_03_30_002317) do
   add_foreign_key "addresses", "provinces"
   add_foreign_key "addresslists", "addresses"
   add_foreign_key "addresslists", "users"
-  add_foreign_key "orderproductlists", "oders"
+  add_foreign_key "orderproductlists", "orders"
   add_foreign_key "orderproductlists", "products"
   add_foreign_key "orders", "statuses"
   add_foreign_key "orders", "users"
