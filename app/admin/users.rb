@@ -6,20 +6,23 @@ ActiveAdmin.register User do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :email, :password, :alias, :is_admin
+  permit_params :email, :password, :alias, :is_admin, :avatar
   form do |f|
     f.semantic_errors *f.object.errors.keys
     f.inputs 'Address' do
       f.input :email
       f.input :password
       f.input :alias
+      f.inputs do
+        f.input :avatar, as: :file
+      end
       f.has_many :addresslists, allow_destroy: true do |n_f|
         n_f.input :address
       end
     end
     f.actions
   end
-  #
+
   # or
   #
   # permit_params do

@@ -6,7 +6,7 @@ ActiveAdmin.register Orderproductlist do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :price, :quantity, :oder_id, :product_id
+  permit_params :price, :quantity, :order_id, :product_id
   #
   # or
   #
