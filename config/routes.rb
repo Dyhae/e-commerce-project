@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :pages
   get 'addresses/index'
   get 'addresses/show'
   devise_for :admin_users, ActiveAdmin::Devise.config
