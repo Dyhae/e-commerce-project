@@ -10,6 +10,7 @@ class Product < ApplicationRecord
   has_many_attached :image
 
   validates :model, :color, :transmission, :price, :quantity_in_stock, presence: true
+  validates :model, uniqueness: true
 
   def name
     model

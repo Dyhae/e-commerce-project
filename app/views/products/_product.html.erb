@@ -1,0 +1,61 @@
+<div class="column">
+  <div class="card width_height_card">
+    <div class="card-content">
+      <p class="title">
+        <%= link_to product.category.name, category_path(product.category) %>
+      </p>
+      <% if product.image.present? %>
+        <div class="card-image size">
+          <figure class="image is-4by3">
+            <% product.image.each do |image| %>
+              <%= image_tag image, class:"border_radius" %>
+            <% end %>
+          </figure>
+        </div>
+      <%else %>
+        <div class="card-image size">
+          <figure class="image is-4by3">
+            <%= image_tag 'vector-automovil-automotriz_20448-127.jpg', class:"border_radius" %>
+          </figure>
+        </div>
+      <% end %>
+      <div>
+        <% if show_link %>
+          <%= link_to product_path(product) do%>
+            <%= product.model %>
+          <% end%>
+        <% else %>
+            <%= product.model %>
+        <% end %>
+      </div>
+      <%if show_page %>
+        <div class="card-content">
+          <div >
+            <p>Color: <%= product.color %></p>
+          </div>
+          <div >
+            <p>Transmission: <%= product.transmission %></p>
+          </div>
+          <%if product.car_option.present?%>
+            <div>
+              <p>Car option: <%= product.car_option %></p>
+            </div>
+          <% end %>
+          <div >
+              <p>Car_ description: <%= product.car_description %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <footer class="card-footer">
+      <%if product.state == "On Sale"%>
+        <p class="card-footer-item">
+          On sale: <%= product.sale_percentage %>
+        </p>
+      <% end %>
+      <p class="card-footer-item">
+        Price: <%= product.price %>
+      </p>
+    </footer>
+  </div>
+</div>

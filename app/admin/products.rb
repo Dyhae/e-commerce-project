@@ -13,6 +13,8 @@ ActiveAdmin.register Product do
       f.input :price
       f.input :sale_percentage
       f.input :quantity_in_stock
+      f.input :category
+      f.input :state
       f.inputs do
         f.input :image, as: :file
       end
