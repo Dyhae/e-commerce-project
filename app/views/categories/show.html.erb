@@ -1,7 +1,11 @@
-<% @count = 0 %>
-<% @category.products.each do |category_products| %>
-  <div>
-    <%= @count += 1 %>
-    <%= category_products.model %>
-  </div>
-<% end %>
+  <%# <h4 class="title is-2 background_color margin_around">All Cars</h4> %>
+<%= render partial: 'categories/searchForm' %>
+
+<div class="columns is-multiline margin_around">
+    <%= render partial: 'products/product',
+             collection: @category_products,
+             locals: { show_link: true, show_page: false} %>
+</div>
+<%# <div class="pagination">
+  <%= paginate @category_products, :renderer => BulmaPagination::Rails, class: "" %>
+</div> %>

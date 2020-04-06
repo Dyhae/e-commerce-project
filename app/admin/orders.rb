@@ -6,7 +6,7 @@ ActiveAdmin.register Order do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :order_number, :subtotal, :GST, :PST, :HST, :total, :status_id, :user_id, orderproductlists: %i[id order_id product_id _destroy]
+  permit_params :order_number, :subtotal, :GST, :PST, :HST, :total, :status_id, :user_id, orderproductlists_attributes: %i[id order_id product_id _destroy]
   form do |f|
     f.semantic_errors *f.object.errors.keys
     f.inputs 'Orders' do

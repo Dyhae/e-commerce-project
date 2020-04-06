@@ -1,33 +1,36 @@
 <div class="column">
-  <div class="card width_height_card">
+  <div class="card width_height_card card_box_shadow">
     <div class="card-content">
       <p class="title">
         <%= link_to product.category.name, category_path(product.category) %>
       </p>
-      <% if product.image.present? %>
+      <% if product.images.present? %>
         <div class="card-image size">
           <figure class="image is-4by3">
-            <% product.image.each do |image| %>
-              <%= image_tag image, class:"border_radius" %>
+            <% product.images.each do |image| %>
+              <%= image_tag image%>
             <% end %>
           </figure>
         </div>
       <%else %>
         <div class="card-image size">
           <figure class="image is-4by3">
-            <%= image_tag 'vector-automovil-automotriz_20448-127.jpg', class:"border_radius" %>
+            <%= image_tag 'vector-automovil-automotriz_20448-127.jpg' %>
           </figure>
         </div>
       <% end %>
-      <div>
-        <% if show_link %>
-          <%= link_to product_path(product) do%>
-            <%= product.model %>
-          <% end%>
-        <% else %>
-            <%= product.model %>
-        <% end %>
-      </div>
+      <% if show_link %>
+        <%= link_to product_path(product),class:"button is-primary button-radius" do%>
+          <div class="is-size-5">
+            Model: <%= product.model %>
+          </div>
+        <% end%>
+      <% else %>
+        <div class="is-size-5">
+          Model:<%= product.model %>
+        </div>
+      <% end %>
+
       <%if show_page %>
         <div class="card-content">
           <div >
@@ -47,13 +50,17 @@
         </div>
       <% end %>
     </div>
-    <footer class="card-footer">
-      <%if product.state == "On Sale"%>
-        <p class="card-footer-item">
+    <footer class="card-footer  ">
+      <%if product.state.name == "On Sale"%>
+        <p class="card-footer-item has-background-danger is-size-4">
           On sale: <%= product.sale_percentage %>
         </p>
+      <%elsif product.state.name == "recently updated"%>
+        <p class="card-footer-item has-background-warning is-size-4">
+          Recently Updated
+        </p>
       <% end %>
-      <p class="card-footer-item">
+      <p class="card-footer-item is-size-4">
         Price: <%= product.price %>
       </p>
     </footer>

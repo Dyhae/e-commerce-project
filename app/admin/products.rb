@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Product do
-  permit_params :model, :color, :transmission, :car_description, :car_option, :price, :sale_percentage, :quantity_in_stock, :state_id, :category_id, :image
+  permit_params :model, :color, :transmission, :car_description, :car_option,
+                :price, :sale_percentage, :quantity_in_stock, :state_id, :category_id, :images,
+                orderproductlists_attributes: %i[id product_id order_id _destroy]
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    f.inputs 'Orders' do
+    f.inputs 'Products' do
       f.input :model
       f.input :color
       f.input :transmission
@@ -16,7 +18,7 @@ ActiveAdmin.register Product do
       f.input :category
       f.input :state
       f.inputs do
-        f.input :image, as: :file
+        f.input :images, as: :file
       end
       f.has_many :orderproductlists, allow_destroy: true do |n_f|
         n_f.input :order

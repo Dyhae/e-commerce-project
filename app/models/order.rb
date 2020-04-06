@@ -5,7 +5,7 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :orderproductlists
   has_many :products, through: :orderproductlists
-  accepts_nested_attributes_for :orderproductlists
+  accepts_nested_attributes_for :orderproductlists, allow_destroy: true
   accepts_nested_attributes_for :products
   def name
     order_number

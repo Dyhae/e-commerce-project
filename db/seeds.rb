@@ -57,6 +57,7 @@ myArray.each do |p|
     category.save
     20.times do
       price = rand(1000.00..120_000.00)
+      price = price.round(2)
       product = Product.find_or_create_by(model: Faker::Vehicle.model(make_of_model: category.name))
       product.color = Faker::Vehicle.color
       product.transmission = Faker::Vehicle.transmission

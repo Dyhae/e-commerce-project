@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+ .border_radius
+ {
+    border-radius: 15px;
+ }
+
+ .bar_between
+ {
+   padding: 0px;
+   margin: 0px;
+   height: 100%;
+   font-size: 25px;
+ }
+
+.z_index_one
+{
+  z-index: 1;
+}
+
+.z_index_two
+{
+  z-index: 2;
+  margin-top: -100vh;
+}
+
+.nav-image
+{
+  width: 60px;
+  height: 60px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}

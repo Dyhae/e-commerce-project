@@ -1,7 +1,23 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.width_height_card {
+.width_height_card
+{
   width: 500px;
-  height: 500px;
+  height: auto;
+}
+
+.margin_around
+{
+  margin: 15px;
+}
+
+.card_box_shadow
+{
+  box-shadow: 0 0 2px 2px;
+}
+
+.button-radius
+{
+  border-radius: 7px;
 }

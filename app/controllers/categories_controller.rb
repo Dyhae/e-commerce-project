@@ -6,6 +6,10 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
+    @category_products = Category.find(params[:id]).products
+  end
+
+  def search_results_category
+    @search_results_category = Category.find(params[:id]).products.where('model LIKE ?', "%#{params[:search_term]}%")
   end
 end

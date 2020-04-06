@@ -1,5 +1,19 @@
-<h1><%= @page.title %></h1>
-<article>
-  <%= @page.content %>
-</article>
-<p>Last updated<%= @page.updated_at %></p>
+<div class="column">
+  <div class="card width_height_card card_box_shadow">
+    <div class="card-content">
+      <p class="title">
+        <h1 class="is-size-1"><%= @page.title %></h1>
+      </p>
+        <div class="card-content">
+          <article class="height_article_content">
+            <%= @page.content %>
+          </article>
+        </div>
+    </div>
+    <footer class="card-footer">
+      <div>
+        <p class="is-size-6">Last updated<%= @page.updated_at %></p>
+      </div>
+    </footer>
+  </div>
+</div>

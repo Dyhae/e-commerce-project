@@ -17,12 +17,16 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
   resources 'categories', only: %i[index show]
+  resources 'states', only: %i[index show]
   resources 'addresses', only: %i[index show]
   resources 'products', only: %i[index show]
 
   resources :pages
 
   get '/p/:permalink', to: 'pages#permalink', as: 'permalink'
+  get '/s/:name', to: 'states#getState', as: 'states_name'
+  get '/search/', to: 'products#search_results', as: 'search' # search_path
+  get '/categories/:id/search/', to: 'categories#search_results_category', as: 'categories_id_search' # search_path
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
