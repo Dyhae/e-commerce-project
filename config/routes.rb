@@ -27,6 +27,10 @@ Rails.application.routes.draw do
   get '/s/:name', to: 'states#getState', as: 'states_name'
   get '/search/', to: 'products#search_results', as: 'search' # search_path
   get '/categories/:id/search/', to: 'categories#search_results_category', as: 'categories_id_search' # search_path
+  get '/session_cart', to: 'products#session_cart'
+
+  post 'products/add_to_cart/:id', to: 'products#add_to_cart', as: 'add_to_cart'
+  delete 'products/remove_from_cart/:id', to: 'products#remove_from_cart', as: 'remove_from_cart'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

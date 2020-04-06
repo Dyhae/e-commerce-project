@@ -4,7 +4,7 @@
 <div class="columns is-multiline margin_around">
     <%= render partial: 'products/product',
              collection: @category_products,
-             locals: { show_link: true, show_page: false} %>
+             locals: { show_link: true, show_page: false,category_page:false} %>
 </div>
 <%# <div class="pagination">
   <%= paginate @category_products, :renderer => BulmaPagination::Rails, class: "" %>

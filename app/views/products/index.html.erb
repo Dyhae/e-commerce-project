@@ -1,13 +1,11 @@
-
 <%= render partial: 'products/searchForm' %>
 
   <h4 class="title is-2 background_color margin_around">All Cars</h4>
-
 <div class="columns is-multiline margin_around">
     <%= render partial: 'products/product',
              collection: @products,
-             locals: { show_link: true, show_page: false} %>
+             locals: { show_link: true, show_page: false, category_page:false} %>
 </div>
-<%# <div class="pagination">
-  <%= paginate @products, :renderer => BulmaPagination::Rails, class: "" %>
-</div> %>
+<div class="pagination">
+  <%= paginate @products%>
+</div>

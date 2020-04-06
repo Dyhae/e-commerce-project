@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class StatesController < ApplicationController
+
   def index
     # @stateUpdate = State.find_by(name: 'recently updated').products
   end

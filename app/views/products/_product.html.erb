@@ -52,17 +52,37 @@
     </div>
     <footer class="card-footer  ">
       <%if product.state.name == "On Sale"%>
-        <p class="card-footer-item has-background-danger is-size-4">
+        <p class="card-footer-item has-background-danger is-size-6">
           On sale: <%= product.sale_percentage %>
         </p>
       <%elsif product.state.name == "recently updated"%>
-        <p class="card-footer-item has-background-warning is-size-4">
+        <p class="card-footer-item has-background-warning is-size-6">
           Recently Updated
         </p>
       <% end %>
-      <p class="card-footer-item is-size-4">
+      <p class="card-footer-item is-size-6">
         Price: <%= product.price %>
       </p>
     </footer>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <% if @cart.include?(product) %>
+            <%if category_page %>
+              <label for="quantity">Quantity (between 1 and 5):</label>
+              <input class="margin_right" type="number" id="quantity" name="quantity" min="1" max="5">
+              <%= button_to remove_from_cart_url(product),method: :delete, class: "button is-danger"  do%>
+                <p>Remove</p>
+              <% end  %>
+            <% else %>
+              <p>The product is included</p>
+            <% end %>
+          <% else %>
+            <p><%= link_to 'add to cart', add_to_cart_path(product.id), method: :post, class: "button is-primary"  %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

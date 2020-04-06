@@ -62,6 +62,9 @@
                 <a class="button is-light">
                   Log in
                 </a>
+                <%= link_to session_cart_path(), class: "button is-light"  do%>
+                  <%=image_tag "shopping-cart.png" %>
+                <% end  %>
             </div>
           </div>
         </div>
@@ -90,6 +93,7 @@
           </div>
         <% end %>
       </div>
+      <h1>You have visited this site <%= pluralize @visit_count, 'time' %></h1>
       <%= yield %>
     </div>
   </body>
