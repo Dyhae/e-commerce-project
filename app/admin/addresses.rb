@@ -6,7 +6,7 @@ ActiveAdmin.register Address do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :street_no, :apt_no, :postal_code, :city, :province_id, addresslists: %i[id address_id user_id _destroy]
+  permit_params :street_no, :apt_no, :postal_code, :city, :province_id, addresslists_attributes: %i[id address_id user_id _destroy]
   form do |f|
     f.semantic_errors *f.object.errors.keys
     f.inputs 'Address' do

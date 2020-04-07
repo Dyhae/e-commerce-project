@@ -6,7 +6,7 @@ ActiveAdmin.register User do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :email, :password, :alias, :is_admin, :avatar
+  permit_params :email, :password, :alias, :is_admin, :avatar, addresslists_attributes: %i[id address_id user_id _destroy]
   form do |f|
     f.semantic_errors *f.object.errors.keys
     f.inputs 'Address' do
