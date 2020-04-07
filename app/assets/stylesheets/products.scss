@@ -3,10 +3,19 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .width_height_card
 {
-  width: 500px;
+  width: 65%;
   height: auto;
 }
+.size
+{
+  width: 400px;
+  height: 350px;
+}
+.padding_around
+{
+  padding: 15px;
 
+}
 .margin_around
 {
   margin: 15px;
@@ -17,6 +26,16 @@
   margin-right: 9rem;
 }
 
+.margin_top
+{
+  margin-top: 1rem;
+}
+
+.margin_bottom
+{
+  margin-bottom: 1rem;
+}
+
 .card_box_shadow
 {
   box-shadow: 0 0 2px 2px;
@@ -25,4 +44,31 @@
 .button-radius
 {
   border-radius: 7px;
+}
+.detail_image
+{
+  width: 70px;
+  height: 45px;
+}
+
+.flex_card
+{
+  display: flex;
+  // flex-direction: column;
+}
+
+.flex_card_column
+{
+  flex-direction: column;
+}
+
+.flex_card_row
+{
+  flex-direction: row;
+}
+
+.on_sale_and_price
+{
+  padding: 10px;
+  border-radius: 10px;
 }

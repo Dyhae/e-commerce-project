@@ -1,11 +1,10 @@
 <%= render partial: 'categories/searchForm' %>
-
-<p>
-  Found <%= pluralize(@category_products, 'result') %>
-</p>
-
-<div class="search-results columns is-multiline">
-  <%= render partial: 'products/product',
-             collection: @search_results_category,
-             locals: { show_link: true, show_page: true, category_page:false} %>
-</div>
+<%if @search_results_category.empty? %>
+  <h1 class="is-size-1-tablet	roboto">No results have been found</h1>
+<%else %>
+  <div class="search-results columns is-multiline">
+    <%= render partial: 'products/product',
+              collection: @search_results_category,
+              locals: { show_link: true, show_page: true, category_page:false} %>
+  </div>
+<% end %>

@@ -1,72 +1,67 @@
-<div class="column">
-  <div class="card width_height_card card_box_shadow">
-    <div class="card-content">
-      <p class="title">
-        <%= link_to product.category.name, category_path(product.category) %>
-      </p>
-      <% if product.images.present? %>
-        <div class="card-image size">
-          <figure class="image is-4by3">
-            <% product.images.each do |image| %>
-              <%= image_tag image%>
-            <% end %>
-          </figure>
-        </div>
-      <%else %>
-        <div class="card-image size">
-          <figure class="image is-4by3">
-            <%= image_tag 'vector-automovil-automotriz_20448-127.jpg' %>
-          </figure>
-        </div>
-      <% end %>
-      <% if show_link %>
-        <%= link_to product_path(product),class:"button is-primary button-radius" do%>
-          <div class="is-size-5">
-            Model: <%= product.model %>
-          </div>
-        <% end%>
-      <% else %>
-        <div class="is-size-5">
-          Model:<%= product.model %>
-        </div>
-      <% end %>
-
-      <%if show_page %>
+<div class="column width_height_card ">
+  <div class="card card_box_shadow flex_card padding_around">
+    <% if product.images.present? %>
+      <div class="card-image size">
+        <figure class="image is-4by3">
+          <% product.images.each do |image| %>
+            <%= image_tag image%>
+          <% end %>
+        </figure>
+      </div>
+    <%else %>
+      <div class="card-image size">
+        <figure class="image is-4by3">
+          <%= image_tag 'vector-automovil-automotriz_20448-127.jpg' %>
+        </figure>
+      </div>
+    <% end %>
+    <div class= "flex_card_column">
         <div class="card-content">
-          <div >
-            <p>Color: <%= product.color %></p>
-          </div>
-          <div >
-            <p>Transmission: <%= product.transmission %></p>
-          </div>
-          <%if product.car_option.present?%>
-            <div>
-              <p>Car option: <%= product.car_option %></p>
+          <p class="title">
+            <%= link_to product.category.name, category_path(product.category) %>
+          </p>
+
+            <div class="is-size-5">
+              Model:<%= product.model %>
+            </div>
+          <% if show_link %>
+            <div class="margin_top">
+              <%= link_to product_path(product), class:"button is-primary"  do%>
+                Details
+              <% end  %>
             </div>
           <% end %>
-          <div >
-              <p>Car_ description: <%= product.car_description %></p>
-          </div>
+
+          <%if show_page %>
+            <div class="card-content">
+              <div class="margin_around is-size-5 " >
+                Color: <%= product.color %>
+              </div>
+              <div class="margin_around is-size-5 ">
+                Transmission: <%= product.transmission %>
+              </div>
+              <%if product.car_option.present?%>
+                <div class="margin_around is-size-5">
+                  Car option: <%= product.car_option %>
+                </div>
+              <% end %>
+              <div class="margin_around is-size-5">
+                  Car_ description: <%= product.car_description %>
+              </div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
-    <footer class="card-footer  ">
-      <%if product.state.name == "On Sale"%>
-        <p class="card-footer-item has-background-danger is-size-6">
-          On sale: <%= product.sale_percentage %>
-        </p>
-      <%elsif product.state.name == "recently updated"%>
-        <p class="card-footer-item has-background-warning is-size-6">
-          Recently Updated
-        </p>
-      <% end %>
-      <p class="card-footer-item is-size-6">
-        Price: <%= product.price %>
-      </p>
-    </footer>
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
+        <footer class="card-footer ">
+          <p class="on_sale_and_price is-size-6">
+            Price: $<%= product.price.round(2) %>
+          </p>
+          <%if product.state.name == "On Sale"%>
+            <p class="on_sale_and_price has-background-danger is-size-7">
+              - <%= (product.sale_percentage * 100).round(0) %>%
+            </p>
+          <% end %>
+        </footer>
+        <div class="buttons margin_top margin_bottom">
           <% if @cart.include?(product) %>
             <%if category_page %>
               <label for="quantity">Quantity (between 1 and 5):</label>
@@ -81,8 +76,6 @@
             <p><%= link_to 'add to cart', add_to_cart_path(product.id), method: :post, class: "button is-primary"  %></p>
           <% end %>
         </div>
-      </div>
     </div>
-
   </div>
 </div>

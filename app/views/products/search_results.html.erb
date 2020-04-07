@@ -1,9 +1,4 @@
 <%= render partial: 'products/searchForm' %>
-
-<p>
-  Found <%= pluralize(@category_products, 'result') %>
-</p>
-
 <div class="search-results columns is-multiline">
   <%= render partial: 'products/product',
              collection: @product_search,

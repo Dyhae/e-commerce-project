@@ -6,6 +6,6 @@
              collection: @category_products,
              locals: { show_link: true, show_page: false,category_page:false} %>
 </div>
-<%# <div class="pagination">
-  <%= paginate @category_products, :renderer => BulmaPagination::Rails, class: "" %>
-</div> %>
+<div class="pagination">
+  <%= paginate @category_products %>
+</div>
