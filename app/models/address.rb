@@ -10,4 +10,5 @@ class Address < ApplicationRecord
   def name
     street_no + ' ' + city + ' ' + postal_code
   end
+
 end

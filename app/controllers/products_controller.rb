@@ -19,15 +19,35 @@ class ProductsController < ApplicationController
 
   def add_to_cart
     id = params[:id].to_i
-    session[:cart] << id unless session[:cart].include?(id)
+    quantity = 1
+    unless session[:cart].include?(id)
+      session[:cart] << { id: id, quantity_passed: quantity }
+    end
     redirect_to root_path
   end
 
   def remove_from_cart
-    id = params[:id].to_i
-    session[:cart].delete(id)
-    redirect_to root_path
+    puts params[:id]
+    cart = session[:cart]
+    cart.delete_if { |i| i['id'] == params[:id].to_i }
+    redirect_back(fallback_location: root_path)
   end
 
-
+  def update_quantity
+    id = params[:id].to_i
+    @quantity = 0
+    session[:cart].each do |item|
+      if item['id'] == id
+        if params[:type] == 'plus'
+          item['quantity_passed'] = item['quantity_passed'] + 1
+          @quantity = item['quantity_passed']
+        elsif params[:type] == 'minus'
+          item['quantity_passed'] = item['quantity_passed'] - 1
+          @quantity = item['quantity_passed']
+        end
+      end
+    end
+    puts session[:cart]
+    redirect_to session_cart_path
+  end
 end

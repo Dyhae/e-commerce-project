@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .width_height_card
 {
-  width: 65%;
+  width: 800px;
   height: auto;
 }
 .size
@@ -71,4 +71,9 @@
 {
   padding: 10px;
   border-radius: 10px;
+}
+
+.flex_quantity_remove
+{
+  display: flex;
 }

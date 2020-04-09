@@ -12,88 +12,89 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="body">
+  <div class = "margin_around_body">
     <nav class="navbar has-background-grey-lighter border_radius" role="navigation" aria-label="main navigation">
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-          <div>
-              <%= image_tag "header-background.jpg", class:"nav-image" %>
-          </div>
-          <div class=" is-size-3 navbar-item  title-size">
-             GK AUTOMOBILE
-          </div>
-          <%= link_to products_path, class: "navbar-item is-size-4 is-hoverable" do%>
-            <div>
-              Product
-            </div>
-          <% end %>
-          <div class="navbar-item bar_between">|</div>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <div class="navbar-link is-size-4 ">
-              Categories
-            </div>
-            <div class="navbar-dropdown">
-              <% Category.all.each do |category| %>
-                <div class="navbar-item">
-                  <%= link_to category.name, category_path(category) %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <div class="navbar-item bar_between">|</div>
-          <%= link_to permalink_path('about_us'), class: "navbar-item is-size-4 is-hoverable" do%>
-            <div>
-              About
-            </div>
-          <% end %>
-          <p class="navbar-item bar_between">|</p>
-          <%= link_to permalink_path('contact'), class: "navbar-item is-size-4 is-hoverable" do%>
-            <div>
-              Contact
-            </div>
-          <% end %>
-        </div>
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-                <a class="button is-primary">
-                  <strong>Sign up</strong>
-                </a>
-                <a class="button is-light">
-                  Log in
-                </a>
-                <%= link_to session_cart_path(), class: "button is-light"  do%>
-                  <%=image_tag "shopping-cart.png" %>
-                <% end  %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <div class= "image-size z_index_one">
-      <%= image_tag "car-background.jpg"%>
-    </div>
-    <div class="z_index_two">
+    <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <%= link_to states_name_path('New'), class: "navbar-item is-size-4 is-hoverable" do%>
+        <div>
+            <%= image_tag "header-background.jpg", class:"nav-image" %>
+        </div>
+        <div class=" is-size-3 navbar-item  title-size">
+            GK AUTOMOBILE
+        </div>
+        <%= link_to products_path, class: "navbar-item is-size-4 is-hoverable" do%>
           <div>
-            New
+            Product
           </div>
         <% end %>
         <div class="navbar-item bar_between">|</div>
-        <%= link_to states_name_path('On Sale'), class: "navbar-item is-size-4 is-hoverable" do%>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link is-size-4 ">
+            Categories
+          </div>
+          <div class="navbar-dropdown">
+            <% Category.all.each do |category| %>
+              <div class="navbar-item">
+                <%= link_to category.name, category_path(category) %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="navbar-item bar_between">|</div>
+        <%= link_to permalink_path('about_us'), class: "navbar-item is-size-4 is-hoverable" do%>
           <div>
-            On Sale
+            About
           </div>
         <% end %>
-        <div class="navbar-item bar_between">|</div>
-        <%= link_to states_name_path('recently updated'), class: "navbar-item is-size-4 is-hoverable" do%>
+        <p class="navbar-item bar_between">|</p>
+        <%= link_to permalink_path('contact'), class: "navbar-item is-size-4 is-hoverable" do%>
           <div>
-            Recently updated
+            Contact
           </div>
         <% end %>
       </div>
-      <%= yield %>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <% if current_user %>
+              <%= link_to 'sign_out', destroy_user_session_path, method: :delete, class:"button is-primary" %>
+              <%= link_to 'addresses', addresses_new_path, class:"button is-light" %>
+            <% else %>
+              <%= link_to 'sign up', new_user_registration_path, class:"button is-primary" %>
+              <%= link_to 'Log in', new_user_session_path, class:"button is-light" %>
+            <% end %>
+              <%= link_to session_cart_path(), class: "button is-light"  do%>
+                <%=image_tag "shopping-cart.png" %>
+              <% end  %>
+          </div>
+        </div>
+      </div>
     </div>
+  </nav>
+  <div class="z_index_two">
+    <div class="navbar-start">
+      <%= link_to states_name_path('New'), class: "navbar-item is-size-4 is-hoverable" do%>
+        <div>
+          New
+        </div>
+      <% end %>
+      <div class="navbar-item bar_between">|</div>
+      <%= link_to states_name_path('On Sale'), class: "navbar-item is-size-4 is-hoverable" do%>
+        <div>
+          On Sale
+        </div>
+      <% end %>
+      <div class="navbar-item bar_between">|</div>
+      <%= link_to states_name_path('recently updated'), class: "navbar-item is-size-4 is-hoverable" do%>
+        <div>
+          Recently updated
+        </div>
+      <% end %>
+    </div>
+    <%= yield %>
+  </div>
+
+  </div>
   </body>
 </html>

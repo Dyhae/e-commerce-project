@@ -13,6 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ .body
+ {
+   background-image: url("car-background.jpg");
+ }
  .border_radius
  {
     border-radius: 15px;
@@ -26,7 +31,7 @@
    font-size: 25px;
  }
 
-.z_index_one
+/* .z_index_one
 {
   z-index: 1;
 }
@@ -34,8 +39,8 @@
 .z_index_two
 {
   z-index: 2;
-  margin-top: -100vh;
-}
+  margin-top: -138vh;
+} */
 
 .nav-image
 {
@@ -43,4 +48,12 @@
   height: 60px;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
+}
+
+.margin_around_body
+{
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
