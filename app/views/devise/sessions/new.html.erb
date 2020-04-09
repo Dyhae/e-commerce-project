@@ -1,0 +1,56 @@
+<h2 class="title is-1">Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <div class="field">
+    <%= f.label :email,class:"label" %><br />
+    <div class="control has-icons-left has-icons-right">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input is-danger", placeholder:"Email input" %>
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <% if flash[:alert].present? %>
+        <span class="icon is-small is-right">
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+      <% end %>
+    </div>
+    <% if flash[:alert].present?.present? %>
+      <p class="help is-danger"><%= flash[:alert]%></p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password,class:"label" %>
+    <div class="control has-icons-left">
+      <%= f.password_field :password, autocomplete: "current-password", class:"input", placeholder:"Password"  %>
+      <span class="icon is-small is-left">
+        <i class="fas fa-lock"></i>
+      </span>
+      <% if flash[:alert].present? %>
+        <span class="icon is-small is-right">
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+      <% end %>
+    </div>
+    <% if flash[:alert].present? %>
+      <p class="help is-danger"><%= flash[:alert]%></p>
+    <% end %>
+
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <%= f.submit "Log in",class:"button is-link" %>
+    </div>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links",class:"button is-link" %>

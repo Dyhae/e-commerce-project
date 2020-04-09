@@ -1,0 +1,119 @@
+
+<%# <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %> %>
+<%= form_for(:create_addresses , method: "post", url:addresses_create_path(:create_addresses))  do |f| %>
+
+  <div class="field">
+    <%= f.label :street_no, class:"label" %><br />
+    <div class="control has-icons-left has-icons-right">
+      <%= f.text_field :street_no, autofocus: true, autocomplete: "text", class:"input is-danger", placeholder:"Stree no and name" %>
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <%# <% if :street_no.present? %> %>
+        <span class="icon is-small is-right">
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+      <%# <% end %> %>
+    </div>
+    <%# <% if :create_addresses.errors[:street_no].present? %> %>
+      <ul>
+        <%# <% :create_addresses.errors[:street_no].each do |msg| %> %>
+          <%# <li class="help is-danger"><%= msg%></li> %>
+        <%# <% end %> %>
+      </ul>
+    <%# <% end %> %>
+  </div>
+
+  <div class="field">
+    <%= f.label :apt_no,class:"label" %><br />
+    <div class="control has-icons-left has-icons-right">
+      <%= f.text_field :apt_no, autofocus: true, autocomplete: "text", class:"input is-danger", placeholder:"apt no" %>
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <%# <% if resource.errors[:apt_no].present? %> %>
+        <span class="icon is-small is-right">
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+      <%# <% end %> %>
+    </div>
+    <%# <% if resource.errors[:apt_no].present? %> %>
+      <ul>
+        <%# <% resource.errors[:apt_no].each do |msg| %> %>
+          <%# <li class="help is-danger"><%= msg%></li> %>
+        <%# <% end %> %>
+      </ul>
+    <%# <% end %> %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postal_code,class:"label" %><br />
+    <div class="control has-icons-left has-icons-right">
+      <%= f.text_field :postal_code, autofocus: true, autocomplete: "text", class:"input is-danger", placeholder:"apt no" %>
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <%# <% if resource.errors[:postal_code].present? %> %>
+        <span class="icon is-small is-right">
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+      <%# <% end %> %>
+    </div>
+    <%# <% if resource.errors[:postal_code].present? %> %>
+      <ul>
+        <%# <% resource.errors[:postal_code].each do |msg| %> %>
+          <%# <li class="help is-danger"><%= msg%></li> %>
+        <%# <% end %> %>
+      </ul>
+    <%# <% end %> %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city,class:"label" %><br />
+    <div class="control has-icons-left has-icons-right">
+      <%= f.text_field :city, autofocus: true, autocomplete: "text", class:"input is-danger", placeholder:"apt no" %>
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <%# <% if resource.errors[:city].present? %> %>
+        <span class="icon is-small is-right">
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+      <%# <% end %> %>
+    </div>
+    <%# <% if resource.errors[:city].present? %> %>
+      <ul>
+        <%# <% resource.errors[:city].each do |msg| %> %>
+          <%# <li class="help is-danger"><%= msg%></li> %>
+        <%# <% end %> %>
+      </ul>
+    <%# <% end %> %>
+  </div>
+  <div class="field">
+    <%= f.label :provinces,class:"label" %><br />
+    <div class="control has-icons-left has-icons-right">
+        <%= f.collection_select  :province_id, Province.all, :id, :name, include_blank: true%>
+        <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <%# <% if resource.errors[:city].present? %> %>
+        <span class="icon is-small is-right">
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+      <%# <% end %> %>
+    </div>
+    <%# <% if resource.errors[:city].present? %> %>
+      <ul>
+        <%# <% resource.errors[:city].each do |msg| %> %>
+          <%# <li class="help is-danger"><%= msg%></li> %>
+        <%# <% end %> %>
+      </ul>
+    <%# <% end %> %>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <%= f.submit "Add Address",class:"button is-link" %>
+    </div>
+  </div>
+<% end %>
