@@ -1,3 +1,35 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.users_width
+{
+  margin-left: 40vw;
+  margin-right: 40vw;
+}
+
+@keyframes slide_out
+{
+  from {height: 394px;}
+  to   {height: -394px;}
+}
+
+@keyframes slide_in
+{
+  from {height: -394px;}
+  to   {height: 394px;}
+}
+
+.slide_user_out
+{
+  animation-name: slide_out;
+  animation-duration: 0.5s;
+  visibility: hidden;
+
+}
+
+.slide_user_in
+{
+  animation-name: slide_in;
+  visibility: visible;
+  animation-duration: 0.5s;
+}

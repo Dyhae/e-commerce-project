@@ -16,7 +16,13 @@
 
  .body
  {
-   background-image: url("car-background.jpg");
+    background-image: url("car-background.jpg");
+    background-repeat: no-repeat;
+    background-position:5vw 10vh !important;
+    background-size: contain;
+    background-origin: content-box;
+    height: 100vh;
+    box-shadow: 0 0 80px 80px white inset;
  }
  .border_radius
  {

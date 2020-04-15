@@ -1,9 +1,13 @@
-<h1>Shopping cart products</h1>
-<div>
-    price = <%= @price %>
-</div>
-<div class="columns is-multiline margin_around">
-    <%= render partial: 'products/product',
-             collection: @cart,
-             locals: { show_link: true, show_page: false, category_page:true} %>
+<div id="shoppingCart" class="cart-width ">
+    <h1 class=" shopping-h1 title is-1">Shopping cart products</h1>
+    <div class = "flex_card">
+        <h1 class="price title is-4">price: $<%= @price %></h1>
+        <div class="empty-div"></div>
+        <button class="button is-success checkout-button">Checkout</button>
+    </div>
+    <div class="columns is-multiline margin_around">
+        <%= render partial: 'products/product',
+                collection: @cart,
+                locals: { show_link: true, show_page: false, category_page:true} %>
+    </div>
 </div>
