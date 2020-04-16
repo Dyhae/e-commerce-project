@@ -1,4 +1,4 @@
-<div id="shoppingCart" class="cart-width">
+<%# <div id="shoppingCart" class="cart-width"> %>
 
         <div id="shoppingCart" class="cart-width">
                 <%= link_to "create Address", addresses_new_path, class:"button is-success"  %>
@@ -7,4 +7,4 @@
                                 collection: @addresses,
                                 locals: {remove_address: false, checkout: false, edit_address: false} %>
                 </div>
-</div>
+<%# </div> %>

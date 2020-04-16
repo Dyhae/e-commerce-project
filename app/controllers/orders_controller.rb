@@ -10,15 +10,14 @@ class OrdersController < ApplicationController
   end
 
   def getTheAddress_Province
-      @getTheAddress_Province = Address.find(params[:id]).province
-      createOrder
-      emptyTheSession
-      redirect_to root_path
-
+    @getTheAddress_Province = Address.find(params[:id]).province
+    createOrder
+    emptyTheSession
+    redirect_to root_path
   end
 
   def createOrder
-    order_number = rand(10_000..99_999)
+    order_number = rand(1..99_999)
     newOrder = Order.find_or_create_by(order_number: order_number)
     newOrder.subtotal = @price
     newOrder.GST = @getTheAddress_Province.GST_rate
