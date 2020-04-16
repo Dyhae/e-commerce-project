@@ -2,14 +2,16 @@
 
 class AddressesController < ApplicationController
   def index
-    @addresses = Address.all
+    @addresses = current_user.addresses
   end
 
   def show
     # @Useraddresses = current_user.addresses
   end
 
-  
+  def userAddresses
+    @userAddresses = current_user.addresses
+  end
 
   def create
     # street_no = params[:street_no]

@@ -15,7 +15,7 @@
 
     <% if current_page?(user_addresses_path) %>
         <div class="columns is-multiline margin_around">
-            <%= render partial: 'products/address',
+            <%= render partial: 'Addresses/address',
                     collection: @userAddresses %>
         </div>
     <% end %>
