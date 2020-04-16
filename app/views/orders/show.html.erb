@@ -1,2 +1,19 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<div id="shoppingCart" class="cart-width">
+  <h1 class=" shopping-h1 title is-1">All Orders</h1>
+  <div class="flex_card">
+    <div class="title is-2">
+      Order Number =<%= @order.order_number%>
+    </div>
+    <div class="title is-2">
+        Price: <%= @order.total %>
+    </div>
+  </div>
+
+  <div class="columns is-multiline margin_around">
+      <div class="columns is-multiline margin_around">
+          <%= render partial: 'products/product',
+              collection: @order.products,
+              locals: {show_link: true, show_page: false, category_page:true, product_cart_page: false}%>
+      </div>
+  </div>
+</div>

@@ -48,4 +48,9 @@ class ApplicationController < ActionController::Base
     session[:visit_count] += 1 # Increment the count of the visit count
     @visit_count = session[:visit_count]
   end
+
+  def emptyTheSession
+    session[:visit_count] = 0 # initialize the visit count on first
+    session[:cart] = []
+  end
 end

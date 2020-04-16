@@ -1,3 +1,30 @@
-<div>
-  <%= address.apt_no %>
+<div class="column ">
+  <div class="card card_box_shadow flex_card padding_around width_height_card is-marginless ">
+    <div class= "flex_card_column">
+        <div class="card-content">
+          <% if checkout %>
+            <p>
+            <%= link_to address.name,create_Order_path(address.id)  %>
+          </p>
+          <% else %>
+            <p>
+              <%= link_to address.name, address_path(address.id) %>
+            </p>
+          <% end %>
+
+          <% if remove_address %>
+            <div class="flex_card flex_card">
+              <%= button_to remove_address_url(address.id),method: :delete, class: "button is-danger"  do%>
+                      <p>Remove</p>
+              <% end  %>
+              <div class="empty-div">
+              </div>
+              <%= link_to addresses_edit_page_path(address.id), class: "button is-warning checkout-button"  do%>
+                      <p>update</p>
+              <% end  %>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
 </div>

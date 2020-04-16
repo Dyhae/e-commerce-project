@@ -17,6 +17,19 @@ class ProductsController < ApplicationController
     @product_search = Product.where('model LIKE ?', "%#{params[:search_term]}%")
   end
 
+  def session_cart
+    session_cart_address
+  end
+
+  def session_cart_address
+    if current_user
+      @userAddresses = current_user.addresses
+    else
+      redirect_to new_user_session_path
+      flash[:alert] = 'Must log in.'
+    end
+  end
+
   def add_to_cart
     id = params[:id].to_i
     quantity = 1

@@ -1,0 +1,13 @@
+<div class="column ">
+  <div class="card card_box_shadow flex_card padding_around width_height_card is-marginless ">
+    <div class= "flex_card_column">
+        <div class="card-content">
+          <p class="title is-4">
+          <% if show_link %>
+            <%= link_to order.order_number, order_path(order) %>
+          <% end %>
+          </p>
+        </div>
+    </div>
+  </div>
+</div>

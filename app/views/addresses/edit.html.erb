@@ -1,0 +1,44 @@
+<div id="shoppingCart" class="cart-width">
+      <%= form_for(:update_address , method: "patch", url:addresses_update_path(params[:id],:update_address))  do |f| %>
+        <div class="field">
+          <%= f.label :street_no, class:"label" %><br />
+          <div class="control has-icons-left has-icons-right">
+            <%= f.text_field  :street_no, required: true, autofocus: true, autocomplete: "text", class:"input is-danger", value:@addressEdit.street_no %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :apt_no,class:"label" %><br />
+          <div class="control has-icons-left has-icons-right">
+            <%= f.text_field :apt_no, required: true, autofocus: true, autocomplete: "text", class:"input is-danger", value:@addressEdit.apt_no %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :postal_code,class:"label" %><br />
+          <div class="control has-icons-left has-icons-right">
+            <%= f.text_field :postal_code, required: true, autofocus: true, autocomplete: "text", class:"input is-danger", value:@addressEdit.postal_code %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :city,class:"label" %><br />
+          <div class="control has-icons-left has-icons-right">
+            <%= f.text_field :city, required: true, autofocus: true, autocomplete: "text", class:"input is-danger", value:@addressEdit.city %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :provinces,class:"label" %><br />
+          <div class="control has-icons-left has-icons-right">
+              <%= f.collection_select  :province_id, Province.all, :id, :name, include_blank: true ,required: true, selected: @addressEdit.province_id%>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <%= f.submit "Update",class:"button is-link" %>
+          </div>
+        </div>
+  <% end %>
+</div>

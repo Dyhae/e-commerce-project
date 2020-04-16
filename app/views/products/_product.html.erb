@@ -4,14 +4,14 @@
       <div class="card-image size">
         <figure class="image is-4by3">
           <% product.images.each do |image| %>
-            <%= image_tag image%>
+            <%= image_tag image , alt: "image_car" %>
           <% end %>
         </figure>
       </div>
     <%else %>
       <div class="card-image size">
         <figure class="image is-4by3">
-          <%= image_tag 'vector-automovil-automotriz_20448-127.jpg' %>
+          <%= image_tag 'vector-automovil-automotriz_20448-127.jpg', alt: "image_car" %>
         </figure>
       </div>
     <% end %>
@@ -22,7 +22,7 @@
           </p>
 
             <div class="title is-3">
-              Model: <%=h truncate(product.model, :length => 20)%>
+              Model: <%=h truncate(product.model, :length => 15)%>
             </div>
           <% if show_link %>
             <div class="margin_top">
@@ -62,26 +62,28 @@
           <% end %>
         </footer>
         <div class="buttons margin_top margin_bottom">
-          <% if @cart.include?(product) %>
-            <%if category_page %>
-              <label for="quantity">Quantity (between 1 and 5):</label>
-              <div class='flex_quantity_remove'>
-              <%= link_to "+", update_quantity_path(:id => product.id, :type => "plus"), method: "post",  class: "button is-light"%>
-              <% session[:cart].each do |item|  %>
-                <% if product.id == item['id'].to_i %>
-                  <%= item['quantity_passed'] %>
-                <% end  %>
-              <%  end %>
-              <%= link_to "-", update_quantity_path(:id => product.id, :type => "minus"), method: "post",  class: "button is-light"%>
-                <%= button_to remove_from_cart_url(product.id),method: :delete, class: "button is-danger"  do%>
-                  <p>Remove</p>
-                <% end  %>
-              </div>
+          <% if product_cart_page %>
+            <% if @cart.include?(product) %>
+              <%if category_page %>
+                <label for="quantity">Quantity (between 1 and 5):</label>
+                <div class='flex_quantity_remove'>
+                <%= link_to "+", update_quantity_path(:id => product.id, :type => "plus"), method: "post",  class: "button is-light"%>
+                <% session[:cart].each do |item|  %>
+                  <% if product.id == item['id'].to_i %>
+                    <%= item['quantity_passed'] %>
+                  <% end  %>
+                <%  end %>
+                <%= link_to "-", update_quantity_path(:id => product.id, :type => "minus"), method: "post",  class: "button is-light"%>
+                  <%= button_to remove_from_cart_url(product.id),method: :delete, class: "button is-danger"  do%>
+                    <p>Remove</p>
+                  <% end  %>
+                </div>
+              <% else %>
+                <p>The product is included</p>
+              <% end %>
             <% else %>
-              <p>The product is included</p>
+              <p><%= link_to 'add to cart', add_to_cart_path(:id => product.id, :type => 'new'), method: "post",  class: "button is-primary"  %></p>
             <% end %>
-          <% else %>
-            <p><%= link_to 'add to cart', add_to_cart_path(:id => product.id, :type => 'new'), method: "post",  class: "button is-primary"  %></p>
           <% end %>
         </div>
     </div>

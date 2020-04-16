@@ -4,7 +4,7 @@
 <div class="columns is-multiline margin_around">
     <%= render partial: 'products/product',
              collection: @products,
-             locals: { show_link: true, show_page: false, category_page:false} %>
+             locals: { show_link: true, show_page: false, category_page:false, product_cart_page: true} %>
 </div>
 <div class="pagination">
   <%= paginate @products%>

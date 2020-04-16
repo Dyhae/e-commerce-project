@@ -1,6 +1,6 @@
 <div id="shoppingCart" class="cart-width">
+    <h1 class=" shopping-h1 title is-1">Shopping cart products</h1>
     <% if current_page?(session_cart_path) %>
-        <h1 class=" shopping-h1 title is-1">Shopping cart products</h1>
         <div class = "flex_card">
             <h1 class="price title is-4">price: $<%= @price %></h1>
             <div class="empty-div"></div>
@@ -9,14 +9,20 @@
         <div class="columns is-multiline margin_around">
             <%= render partial: 'products/product',
                     collection: @cart,
-                    locals: { show_link: true, show_page: false, category_page:true} %>
+                    locals: { show_link: true, show_page: false, category_page:true, product_cart_page: true} %>
         </div>
     <% end %>
 
     <% if current_page?(user_addresses_path) %>
+
         <div class="columns is-multiline margin_around">
-            <%= render partial: 'Addresses/address',
-                    collection: @userAddresses %>
+            <div class="columns is-multiline margin_around">
+                <%= render partial: 'addresses/address',
+                    collection: @userAddresses ,
+                    locals: {remove_address: false,edit_address: false, checkout: true}%>
+            </div>
         </div>
+
+
     <% end %>
 </div>

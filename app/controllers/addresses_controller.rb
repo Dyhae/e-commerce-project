@@ -6,11 +6,25 @@ class AddressesController < ApplicationController
   end
 
   def show
-    # @Useraddresses = current_user.addresses
+    @address = Address.find(params[:id])
   end
 
-  def userAddresses
-    @userAddresses = current_user.addresses
+  def destroy
+    @destroyAddress = Address.find(params[:id])
+    @addressList_Destroy = Addresslist.find_by(address_id: @destroyAddress.id)
+    @addressList_Destroy.destroy
+    @destroyAddress.destroy
+    redirect_to addresses_path
+  end
+
+  def edit
+    @addressEdit = Address.find(params[:id])
+  end
+
+  def update
+    @addressUpdate = Address.find(params[:id])
+    @addressUpdate.update!(address_params)
+    redirect_to addresses_path
   end
 
   def create
@@ -31,5 +45,15 @@ class AddressesController < ApplicationController
     @addresslist.save
 
     redirect_to root_path
+  end
+
+  private
+
+  # Using a private method to encapsulate the permissible parameters
+  # is just a good pattern since you'll be able to reuse the same
+  # permit list between create and update. Also, you can specialize
+  # this method with per-user checking of permissible attributes.
+  def address_params
+    params.require(:update_address).permit(:street_no, :apt_no, :abbr, :postal_code, :city, :province_id)
   end
 end

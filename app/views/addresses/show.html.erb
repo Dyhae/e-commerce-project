@@ -1,4 +1,8 @@
-<div class="columns is-multiline margin_around">
-            <%= render partial: 'addresses/address',
-                    collection: @userAddresses %>
-        </div>
+<div id="shoppingCart" class="cart-width">
+
+        <div class="columns is-multiline margin_around">
+                <%= render partial: 'addresses/address',
+                        object: @address,
+                        locals: {remove_address: true,checkout: false, edit_address: false} %>
+                </div>
+</div>

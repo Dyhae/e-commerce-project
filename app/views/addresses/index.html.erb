@@ -1,14 +1,10 @@
-<%# <% if @userAddresses.empty? %> %>
-  <%# <p>There are no Addresses available</p> %>
-<%# <% else %> %>
-    <%# <% @userAddresses.each do |address| %> %>
-    <%# <div> %>
-      <%# <%= address.street_no %> %>
-      <%# <%= address.city %> %>
-    <%# </div> %>
-    <%# <% end %> %>
-<%# <% end %> %>
-<div class="columns is-multiline margin_around">
-            <%= render partial: 'addresses/address',
-                    collection: @addresses %>
-        </div>
+<div id="shoppingCart" class="cart-width">
+
+        <div id="shoppingCart" class="cart-width">
+                <%= link_to "create Address", addresses_new_path, class:"button is-success"  %>
+                <div class="columns is-multiline margin_around">
+                        <%= render partial: 'addresses/address',
+                                collection: @addresses,
+                                locals: {remove_address: false, checkout: false, edit_address: false} %>
+                </div>
+</div>

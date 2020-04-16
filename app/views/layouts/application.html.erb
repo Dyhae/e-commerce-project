@@ -6,7 +6,6 @@
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <%# <%= javascript_include_tag 'jsFile' %> %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -19,7 +18,7 @@
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <div>
-            <%= image_tag "header-background.jpg", class:"nav-image" %>
+            <%= image_tag "header-background.jpg", class:"nav-image", alt: "order_icon" %>
         </div>
         <div class=" is-size-3 navbar-item  title-size">
             GK AUTOMOBILE
@@ -60,13 +59,19 @@
           <div class="buttons">
             <% if current_user %>
               <%= link_to 'sign_out', destroy_user_session_path, method: :delete, class:"button is-primary" %>
-              <%= link_to 'addresses', addresses_new_path, class:"button is-light" %>
+              <%= link_to 'addresses', addresses_path(), class:"button is-light" %>
             <% else %>
               <%= link_to 'sign up', new_user_registration_path, class:"button is-primary" %>
               <%= link_to 'Log in', new_user_session_path, class:"button is-light" %>
             <% end %>
               <%= link_to session_cart_path(), class: "button is-light"  do%>
-                <%=image_tag "shopping-cart.png" %>
+                <%=image_tag "shopping-cart.png", alt: "shopping-cart" %>
+              <% end  %>
+              <%= link_to orders_path(), class: "button is-light"  do%>
+                <%=image_tag "order_icon.png", alt: "order_icon" %>
+              <% end  %>
+              <%= link_to edit_user_registration_path('update'), class: "button is-light"  do%>
+                <%=image_tag "user_icon.jpg", alt: "user_icon" %>
               <% end  %>
           </div>
         </div>
