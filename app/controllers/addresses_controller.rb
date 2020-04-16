@@ -5,7 +5,11 @@ class AddressesController < ApplicationController
     @addresses = Address.all
   end
 
-  def show; end
+  def show
+    # @Useraddresses = current_user.addresses
+  end
+
+  
 
   def create
     # street_no = params[:street_no]

@@ -1,10 +1,14 @@
-<% if @addresses.empty? %>
-  <p>There are no Addresses available</p>
-<% else %>
-    <% @addresses.each do |address| %>
-    <div>
-      <%= address.street_no %>
-      <%= address.city %>
-    </div>
-    <% end %>
-<% end %>
+<%# <% if @userAddresses.empty? %> %>
+  <%# <p>There are no Addresses available</p> %>
+<%# <% else %> %>
+    <%# <% @userAddresses.each do |address| %> %>
+    <%# <div> %>
+      <%# <%= address.street_no %> %>
+      <%# <%= address.city %> %>
+    <%# </div> %>
+    <%# <% end %> %>
+<%# <% end %> %>
+<div class="columns is-multiline margin_around">
+            <%= render partial: 'addresses/address',
+                    collection: @userAddresses %>
+        </div>

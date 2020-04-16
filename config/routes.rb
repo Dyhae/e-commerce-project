@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'orders/index'
+  get 'orders/show'
   resources :pages
   get 'addresses/index'
   get 'addresses/show'
@@ -29,6 +31,7 @@ Rails.application.routes.draw do
   get '/search/', to: 'products#search_results', as: 'search' # search_path
   get '/categories/:id/search/', to: 'categories#search_results_category', as: 'categories_id_search' # search_path
   get 'session_cart', to: 'products#session_cart'
+  get 'session_cart/user_addresses', to: 'products#session_cart', as: 'user_addresses'
 
   post 'products/add_to_cart', to: 'products#add_to_cart', as: 'add_to_cart'
   post 'products/update_quantity', to: 'products#update_quantity', as: 'update_quantity'

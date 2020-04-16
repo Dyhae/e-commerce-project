@@ -17,6 +17,10 @@ class ProductsController < ApplicationController
     @product_search = Product.where('model LIKE ?', "%#{params[:search_term]}%")
   end
 
+  def userAddresses
+    @userAddresses = current_user.addresses
+  end
+
   def add_to_cart
     id = params[:id].to_i
     quantity = 1
